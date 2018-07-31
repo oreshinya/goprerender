@@ -89,8 +89,9 @@ func (p *Prerender) ShouldPrerender(or *http.Request) bool {
 		}
 	}
 
-	// Buffer Agent or requesting an excaped fragment, request prerender
-	if bufferAgent != "" || or.URL.Query().Get("_escaped_fragment_") != "" {
+	// Buffer Agent or requesting an escaped fragment, request prerender
+	_, escaped := or.URL.Query()["_escaped_fragment_"]
+	if bufferAgent != "" || escaped {
 		isRequestingPrerenderedPage = true
 	}
 
