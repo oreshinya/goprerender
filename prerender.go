@@ -1,6 +1,6 @@
 // Package prerender provides a Prerender.io handler implementation and a
 // Negroni middleware.
-package prerender
+package goprerender
 
 import (
 	"compress/gzip"
@@ -34,10 +34,10 @@ type Options struct {
 func NewOptions() *Options {
 	url, _ := url.Parse("https://service.prerender.io/")
 	return &Options{
-		PrerenderURL: url,
-		Token:        os.Getenv("PRERENDER_TOKEN"),
-		BlackList:    nil,
-		WhiteList:    nil,
+		PrerenderURL:   url,
+		Token:          os.Getenv("PRERENDER_TOKEN"),
+		BlackList:      nil,
+		WhiteList:      nil,
 		UsingAppEngine: false,
 	}
 }

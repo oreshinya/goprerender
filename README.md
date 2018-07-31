@@ -26,13 +26,13 @@ import (
   "net/url"
 
   "github.com/codegangsta/negroni"
-  "github.com/tampajohn/prerender"
+  "github.com/oreshinya/goprerender"
   )
 
   func main() {
     n := negroni.New()
     n.Use(negroni.NewLogger())
-    n.Use(prerender.NewOptions().NewPrerender())
+    n.Use(goprerender.NewOptions().NewPrerender())
     n.Use(negroni.NewStatic(http.Dir(".")))
     n.Run(":80")
   }
@@ -49,13 +49,13 @@ import (
   "net/url"
 
   "github.com/codegangsta/negroni"
-  "github.com/tampajohn/prerender"
+  "github.com/oreshinya/goprerender"
   )
 
   func main() {
     n := negroni.New()
     n.Use(negroni.NewLogger())
-    o := prerender.NewOptions()
+    o := goprerender.NewOptions()
     o.PrerenderURL, _ = url.Parse("http://prerender.powerchord.io/")
     n.Use(o.NewPrerender())
     n.Use(negroni.NewStatic(http.Dir(".")))
@@ -71,12 +71,12 @@ import (
   import (
     "net/http"
 
-    "github.com/tampajohn/prerender"
+    "github.com/oreshinya/goprerender"
     )
 
     func main() {
       m := http.NewServeMux()
-      m.HandleFunc("/", prerender.NewOptions().NewPrerender().PreRenderHandler)
+      m.HandleFunc("/", goprerender.NewOptions().NewPrerender().PreRenderHandler)
       http.ListenAndServe(":80", m)
     }
 

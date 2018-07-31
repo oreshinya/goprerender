@@ -1,4 +1,4 @@
-package prerender
+package goprerender
 
 import "regexp"
 
